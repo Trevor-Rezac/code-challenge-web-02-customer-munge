@@ -40,7 +40,13 @@ Output:
 */
 
 export function getAverageCoolFactor(customers) {
-    return true;
+    console.log(customers);
+    let sum = 0;
+    for(let person of customers) {
+        sum += person.cool_factor;
+    }
+    console.log(customers.length);
+    return sum / customers.length;
 }
 
 /* 

@@ -1,6 +1,6 @@
 // IMPORT MODULES under test here:
 import { 
-    greetUsersOverAge60, greetUsers, addAllAges
+    greetUsersOverAge60, greetUsers, addAllAges, getAverageCoolFactor
 } from '../functions.js';
 import customers from './data.js';
 
@@ -85,7 +85,7 @@ test('greetUsersOverAge60 takes in a customer array and returns a greeting to cu
     expect.deepEqual(actual, expected);
 });
 
-test('addAllAges adds the ages of all customers in the data set', (expect) => {
+test('addAllAges takes in an array of customers adds the ages of all customers', (expect) => {
     const expected = 2125;
 
     const actual = addAllAges(customers);
@@ -94,10 +94,10 @@ test('addAllAges adds the ages of all customers in the data set', (expect) => {
 });
 
 
-skip('getAverageCoolFactor', (expect) => {
-    const expected = true;
+test('getAverageCoolFactor takes an array of customers and returns the average cool factor of all customers', (expect) => {
+    const expected = 5.088888888888889;
 
-    const actual = greetUsers();
+    const actual = getAverageCoolFactor(customers);
 
     expect.equal(actual, expected);
 });
