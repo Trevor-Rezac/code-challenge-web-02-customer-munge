@@ -27,10 +27,18 @@ Output:
 */
 
 export function addAllAges(customers) {
-    let sum = 0;
-    for(let person of customers) {
-        sum += person.age;
-    }
+    // let sum = 0;
+    // for(let person of customers) {
+    //     sum += person.age;
+    // }
+    // return sum;
+
+    const sum = customers.reduce((accumulator, currentPerson) => {
+        const ageSoFar = accumulator + currentPerson.age;
+
+        return ageSoFar;
+    }, 0);
+
     return sum;
 }
 
@@ -41,6 +49,7 @@ Output:
 
 export function getAverageCoolFactor(customers) {
     
+
     let sum = 0;
     for(let person of customers) {
         sum += person.cool_factor;
@@ -64,9 +73,8 @@ export function getTotalOfEachGender(customers) {
     
     for(let person of customers) {
         if(countingHashMap[person.gender]) {
-            console.log(countingHashMap);
             countingHashMap[person.gender]++;
-            console.log(countingHashMap);
+            
         } else {
             countingHashMap[person.gender] = 1;
         }
@@ -77,7 +85,7 @@ export function getTotalOfEachGender(customers) {
 
 /* 
 Output: 
- {
+ford {
     female: 3,
     male: 2,
     nonbinary: 1,
@@ -86,7 +94,19 @@ Output:
 */
 
 export function getGenderBreakdownOfFordOwners(customers) {
-    return true;
+    const fordOwners = customers.filter(owner => owner.car_make === 'Ford');
+    
+    const countingHashMap = fordOwners.reduce((accumulator, owner) => {
+    
+        if(accumulator[owner.gender]) {
+            accumulator[owner.gender]++;
+        } else {
+            accumulator[owner.gender] = 1;
+        }
+        return accumulator;
+    }, {});
+
+    return countingHashMap;
 }
 
 //////////////////////////////////////////////////////////
