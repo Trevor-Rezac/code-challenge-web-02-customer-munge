@@ -27,7 +27,11 @@ Output:
 */
 
 export function addAllAges(customers) {
-    return true;
+    let sum = 0;
+    for(let person of customers) {
+        sum += person.age;
+    }
+    return sum;
 }
 
 /* 

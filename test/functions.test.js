@@ -1,12 +1,12 @@
 // IMPORT MODULES under test here:
 import { 
-    greetUsersOverAge60, greetUsers
+    greetUsersOverAge60, greetUsers, addAllAges
 } from '../functions.js';
 import customers from './data.js';
 
 const { test, skip } = QUnit;
 
-test('greetUsers', (expect) => {
+test('greetUsers takes in a customer array and returns a greeting for each customer', (expect) => {
     const expected = [
         'Hello Suzi Summerson!',
         'Hello Boot Penton!',
@@ -61,7 +61,7 @@ test('greetUsers', (expect) => {
 });
 
 
-skip('greetUsersOverAge60', (expect) => {
+test('greetUsersOverAge60 takes in a customer array and returns a greeting to customers over the age of 60', (expect) => {
     const expected = [
         'Hello Suzi Summerson!',
         'Hello Boot Penton!',
@@ -85,10 +85,10 @@ skip('greetUsersOverAge60', (expect) => {
     expect.deepEqual(actual, expected);
 });
 
-skip('addAllAges', (expect) => {
-    const expected = true;
+test('addAllAges adds the ages of all customers in the data set', (expect) => {
+    const expected = 2125;
 
-    const actual = greetUsers();
+    const actual = addAllAges(customers);
 
     expect.equal(actual, expected);
 });
