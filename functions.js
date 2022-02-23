@@ -40,12 +40,12 @@ Output:
 */
 
 export function getAverageCoolFactor(customers) {
-    console.log(customers);
+    
     let sum = 0;
     for(let person of customers) {
         sum += person.cool_factor;
     }
-    console.log(customers.length);
+    
     return sum / customers.length;
 }
 
@@ -60,7 +60,19 @@ Output:
 */
 
 export function getTotalOfEachGender(customers) {
-    return true;
+    const countingHashMap = {};
+    
+    for(let person of customers) {
+        if(countingHashMap[person.gender]) {
+            console.log(countingHashMap);
+            countingHashMap[person.gender]++;
+            console.log(countingHashMap);
+        } else {
+            countingHashMap[person.gender] = 1;
+        }
+
+    }
+    return countingHashMap;
 }
 
 /* 
