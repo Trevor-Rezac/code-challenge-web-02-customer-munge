@@ -4,7 +4,7 @@ Output:
 */
 
 export function greetUsers(customers) {
-    return true;
+    return customers.map(item => `Hello ${item.first_name} ${item.last_name}!`);
 }
 
 /* 
@@ -27,7 +27,19 @@ Output:
 */
 
 export function addAllAges(customers) {
-    return true;
+    // let sum = 0;
+    // for(let person of customers) {
+    //     sum += person.age;
+    // }
+    // return sum;
+
+    const sum = customers.reduce((accumulator, currentPerson) => {
+        const ageSoFar = accumulator + currentPerson.age;
+
+        return ageSoFar;
+    }, 0);
+
+    return sum;
 }
 
 /* 
@@ -36,7 +48,14 @@ Output:
 */
 
 export function getAverageCoolFactor(customers) {
-    return true;
+    
+
+    let sum = 0;
+    for(let person of customers) {
+        sum += person.cool_factor;
+    }
+    
+    return sum / customers.length;
 }
 
 /* 
@@ -50,12 +69,23 @@ Output:
 */
 
 export function getTotalOfEachGender(customers) {
-    return true;
+    const countingHashMap = {};
+    
+    for(let person of customers) {
+        if(countingHashMap[person.gender]) {
+            countingHashMap[person.gender]++;
+            
+        } else {
+            countingHashMap[person.gender] = 1;
+        }
+
+    }
+    return countingHashMap;
 }
 
 /* 
 Output: 
- {
+ford {
     female: 3,
     male: 2,
     nonbinary: 1,
@@ -64,7 +94,19 @@ Output:
 */
 
 export function getGenderBreakdownOfFordOwners(customers) {
-    return true;
+    const fordOwners = customers.filter(owner => owner.car_make === 'Ford');
+    
+    const countingHashMap = fordOwners.reduce((accumulator, owner) => {
+    
+        if(accumulator[owner.gender]) {
+            accumulator[owner.gender]++;
+        } else {
+            accumulator[owner.gender] = 1;
+        }
+        return accumulator;
+    }, {});
+
+    return countingHashMap;
 }
 
 //////////////////////////////////////////////////////////
